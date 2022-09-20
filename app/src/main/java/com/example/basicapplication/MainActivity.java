@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_move;
     private EditText et_test;
     private String str;
+    private ImageView test_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +31,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 str = et_test.getText().toString();
-                Intent intent = new Intent( MainActivity.this, SubActivity.class);
+                Intent intent = new Intent(MainActivity.this, SubActivity.class);
                 intent.putExtra("str", str);
                 startActivity(intent); //액티비티 이동
+            }
+        });
+
+        test_img = (ImageView) findViewById(R.id.test_img);
+        test_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Hello, there!", Toast.LENGTH_SHORT).show();
             }
         });
     }
